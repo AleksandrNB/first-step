@@ -3,7 +3,7 @@ import openpyxl
 wb = openpyxl.load_workbook("request.xlsx", read_only=True, data_only=True)
 ws = wb['Main']
 
-nmatr = []  # матрица из excel таблицы вкладка X
+nmatr = []  # матрица из excel таблицы вкладка Main
 for row in ws.iter_rows(values_only=True):
     nmatr.append(row)
 
@@ -24,7 +24,7 @@ for i in range(1, len(listw) - 1):  # gi#размножить таблицу м�
         sheet.append(subarray)
         sheet[b][3].value = listw[i]  # добавить W
         b += 1
-    print(f'обработка W : {i}')
+    print(f'обработка W : {i} in {len(listw)-1}')
 print(f'Строк : {sheet.max_row}')
 book.close()
 book.save("request NSI.xlsx")  # сохранение
